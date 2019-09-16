@@ -73,15 +73,16 @@ public class RegisterController {
 		    user.setConfirmationToken(UUID.randomUUID().toString());
 		        
 		    userService.saveUser(user);
-				
-			String appUrl = request.getScheme() + "://" + request.getServerName();
 			
+
+			String appUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+
 			SimpleMailMessage registrationEmail = new SimpleMailMessage();
 			registrationEmail.setTo(user.getEmail());
 			registrationEmail.setSubject("Registration Confirmation");
 			registrationEmail.setText("To confirm your e-mail address, please click the link below:\n"
 					+ appUrl + "/confirm?token=" + user.getConfirmationToken());
-			registrationEmail.setFrom("noreply@domain.com");
+			registrationEmail.setFrom("shop.nut.2019@gmail.com");
 			
 			emailService.sendEmail(registrationEmail);
 			

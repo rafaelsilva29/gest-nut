@@ -30,7 +30,7 @@ public class User {
 	@NotEmpty(message = "Please provide an e-mail")
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     @Transient
     private String password;
 
@@ -42,7 +42,7 @@ public class User {
 	@NotEmpty(message = "Please provide your last name")
 	private String lastName;
 
-    @Column(name = "phnone_number", nullable = false)
+    @Column(name = "phnone_number")
     private int phoneNumber;
 
     @Column(name = "confirmation_token")
