@@ -1,7 +1,5 @@
 package com.smartThings.gestNuT.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,18 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import lombok.Data;
-
-@Data
-
 @Entity
-@Table(name = "Address")
-public class Address implements Serializable { 
-
-    private static final long serialVersionUID = 1L;
+@Table(name = "address")
+public class Address { 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,9 +33,35 @@ public class Address implements Serializable {
     @Column
     private String notes;
 
-    /*@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private User user;*/
+    private User user;
     
+    public Address() {
+
+    }
+
+    public Address(String name, String street, String postal, String city, String notes) {
+        this.name = name;
+        this.street = street;
+        this.postalCode = postal;
+        this.city = city;
+        this.notes = notes;
+    }
+
+    // Getters
+    public int getID() { return this.id; }
+    public String getName() { return this.name; }
+    public String getStreet() { return this.street; }
+    public String getPostalCode() { return this.postalCode; }
+    public String getCity() { return this.city; }
+    public String getNotes() { return this.notes; }
+
+    @Override
+    public String toString() {
+        String address = String.format(
+            "Address[id: %d, Name: %s, Street: %s, PostalCode: %s, City: %s, Notes: %s]", 
+            id, name, street, postalCode, city, notes);
+        return address;
+    }
 }
