@@ -15,15 +15,9 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import lombok.Data;
-
-@Data
-
 @Entity
-@Table(name = "Order")
-public class Order implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@Table(name = "order")
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
