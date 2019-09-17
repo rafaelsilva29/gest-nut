@@ -46,7 +46,7 @@ public class User {
     @Column(name = "role")
     private String role;
 
-    @Column(name = "phnone_number")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     @Column(name = "confirmation_token")
@@ -87,6 +87,7 @@ public class User {
     public String getConfirmationToken() { return confirmationToken; }
     public boolean getEnabled() { return enabled; }
     public String getRole() { return role; }
+    public String getPhoneNumber() { return this.phoneNumber; }
     
     // Setters
 	public void setConfirmationToken(String confirmationToken) { this.confirmationToken = confirmationToken; }
@@ -97,6 +98,7 @@ public class User {
     public void setLastName(String lastName) { this.lastName = lastName; }
     public void setEmail(String email) { this.email = email; }
     public void setRole(String role) { this.role = role; }
+    public void setPhoneNumber(String phone) { this.phoneNumber = phone; }
 
     @Override
     public String toString(){

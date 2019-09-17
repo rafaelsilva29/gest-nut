@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
   xmlns:th="http://www.thymeleaf.org">
+  
 
 <head>
   <meta charset="utf-8" />
@@ -24,7 +25,6 @@
 </head>
 
 <body class="gray-bg">
-
   <div class="middle-box text-center loginscreen animated fadeInDown">
     <div>
       
@@ -52,7 +52,10 @@
         <div th:if="${#fields.hasErrors('lastName')}"
           th:errors="*{lastName}"
           class="validation-message alert alert-danger" role="alert"></div>
-
+        
+        <div th:if="${#fields.hasErrors('phoneNumber')}"
+          th:errors="*{phoneNumber}"
+          class="validation-message alert alert-danger" role="alert"></div>
 
         <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
           class="validation-message alert alert-danger" role="alert"></div>
@@ -68,7 +71,6 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-user"></span>
           </span>
-          
           <input type="text" th:field="*{firstName}"
             placeholder="First Name" class="form-control" required />
           <span class="glyphicon form-control-feedback"
@@ -94,9 +96,20 @@
             data-error="This email address is invalid" required />
           <span class="glyphicon form-control-feedback"
             aria-hidden="true"></span>
-
         </div>
-        
+
+        <div class="form-group input-group has-feedback">
+            <label th:if="${#fields.hasErrors('phoneNumber')}"
+              th:errors="*{phoneNumber}" class="validation-message"></label>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-phone"></span>
+            </span>
+            <input type="text" th:field="*{phoneNumber}"
+              placeholder="Phone Number" class="form-control" required />
+            <span class="glyphicon form-control-feedback"
+              aria-hidden="true"></span>
+        </div>
+
 
         <button type="submit"
           class="btn btn-primary block full-width m-b">Register</button>
@@ -107,7 +120,6 @@
       </p>
     </div>
   </div>
-
 
   <!-- jQuery-->
   <script

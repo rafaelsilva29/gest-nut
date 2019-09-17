@@ -67,7 +67,9 @@ public class RegisterController {
 		else { // new user so we create user and send confirmation e-mail
 					
 			// Disable user until they click on confirmation link in email
-		    user.setEnabled(false);
+			user.setEnabled(false);
+			
+			user.setRole("USER");
 		      
 		    // Generate random 36-character string token for confirmation link
 		    user.setConfirmationToken(UUID.randomUUID().toString());
