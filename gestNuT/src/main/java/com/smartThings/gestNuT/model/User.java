@@ -42,8 +42,12 @@ public class User {
 	@NotEmpty(message = "Please provide your last name")
 	private String lastName;
 
+    // <USER> , <ADMIN>
+    @Column(name = "role")
+    private String role;
+
     @Column(name = "phnone_number")
-    private int phoneNumber;
+    private String phoneNumber;
 
     @Column(name = "confirmation_token")
 	private String confirmationToken;
@@ -56,16 +60,22 @@ public class User {
             mappedBy = "user")
     private Set<Address> addresses = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "user")
+    private Set<Parcel> parcels = new HashSet<>();
+
     public User() { 
         
     }
 
-    public User(String username, String email, String pass,  String firstname, String lastname, int phone) {
+    public User(String username, String email, String pass,  String firstname, String lastname, String phone, String role) {
         this.email = email;
         this.password = pass;
         this.firstName = firstname;
         this.lastName = lastname;
         this.phoneNumber = phone;
+        this.role = role;
     }
 
     // Getters
@@ -76,8 +86,8 @@ public class User {
     public String getPassword() { return password; }
     public String getConfirmationToken() { return confirmationToken; }
     public boolean getEnabled() { return enabled; }
+    public String getRole() { return role; }
     
-
     // Setters
 	public void setConfirmationToken(String confirmationToken) { this.confirmationToken = confirmationToken; }
     public void setEnabled(boolean value) { this.enabled = value; }
@@ -86,20 +96,24 @@ public class User {
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
     public void setEmail(String email) { this.email = email; }
+    public void setRole(String role) { this.role = role; }
 
     @Override
     public String toString(){
         String user = String.format(
-            "User[ID: %d, FirstName: '%s', LastName: '%s', Email: '%s', Pass: '%s', Phone: '%s']%n",
-            id, firstName, lastName, email, password, phoneNumber);
-        if(addresses != null){
-            for(Address address : addresses){
+            "User[ID: %d, FirstName: '%s', LastName: '%s', Email: '%s', Pass: '%s', Phone: '%s', Role: '%s']%n",
+            id, firstName, lastName, email, password, phoneNumber, role);
+        if (addresses != null) {
+            for(Address address : addresses) {
                 user += address.toString();
-                /*String.format(
-                    "Address[id: %d, Name: %s, Street: %s, PostalCode: %s, City: %s, Notes: %s]%n", 
-                    address.getID(), address.getName(), address.getStreet(), address.getPostalCode(), address.getCity(), address.getNotes());*/      
+            }
+        }
+        if (parcels != null) {
+            for(Parcel parcel : parcels) {
+                user += parcel.toString();
             }
         }
         return user;
     }
+
 }

@@ -1,9 +1,12 @@
 package com.smartThings.gestNuT.repo;
 
-import java.util.List;
-import org.springframework.data.repository.CrudRepository;
 import com.smartThings.gestNuT.model.Address;
 
+import org.springframework.data.repository.CrudRepository;
+
 public interface AddressRepository extends CrudRepository<Address, Integer>{
-    List<Address> findByCity(String city);
+    Address findByCity(String city);
+    Address findByName(String name);
+    Address findByPostalCode(String postalCode);
+    Address findByStreet(String street);
 }
