@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Welcome to the Spring MVC Quickstart application! Get started quickly by signing up!</title>
+    <title>Welcome to the gestNuT application, a place to buy Nut! Get started quickly by signing up!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
@@ -13,10 +13,13 @@
 <div class="container">
     <div class="text-center">
         
-        <h1>Thymeleaf Layouts</h1>
+        <h1>SmartThings</h1>
         
-        <div class="lead" th:insert="https://www.thymeleaf.org :: section.description">
-            Welcome to the Spring MVC Quickstart application!
+        <div class="lead">
+            Welcome to the gestNuT application, a place to buy Nut!
+            <p></p>
+            <img src="../../../resources/images/nut.png" alt="Nut bag" height="600" width="600">
+            <p></p>
             Get started quickly by signing up.
         </div>
         
@@ -24,9 +27,10 @@
             <a id="signup" class="btn btn-success btn-lg">Sign up</a>
         </p>
     </div>
-    <div th:insert="~{fragments/footer :: footer}">&copy; 2017 The Static Templates</div>
+    <div th:insert="~{fragments/footer :: footer}">&copy; 2019 gestNuT</div>
 </div>
 <script th:inline="javascript" type="text/javascript">
+
 /* Fill in modal with content loaded with Ajax */
 $(document).ready(function () {
     $('#signup').on('click', function (e) {
@@ -41,13 +45,14 @@ $(document).ready(function () {
     })
 });
 </script>
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Signup</h4>
+                <h4 class="modal-title" id="myModalLabel">SignUp</h4>
             </div>
             <div class="modal-body" id="myModalBody">Lorem ipsum</div>
             <div class="modal-footer">
