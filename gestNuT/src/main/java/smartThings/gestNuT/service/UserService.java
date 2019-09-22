@@ -48,7 +48,6 @@ public class UserService implements UserDetailsService {
 		return user;
 	}
 	
-
 	@Bean
 	public TokenBasedRememberMeServices rememberMeServices() {
 		return new TokenBasedRememberMeServices("remember-me-key", this);

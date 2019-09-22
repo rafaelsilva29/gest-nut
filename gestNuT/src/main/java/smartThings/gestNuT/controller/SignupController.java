@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import smartThings.gestNuT.configuration.SignupForm;
+import smartThings.gestNuT.config.SignupForm;
 import smartThings.gestNuT.model.User;
 import smartThings.gestNuT.service.UserService;
 import smartThings.gestNuT.support.web.AjaxUtils;
@@ -40,7 +40,7 @@ class SignupController {
 		if (errors.hasErrors()) {
 			return SIGNUP_VIEW_NAME;
 		}
-		User user = userService.saveUser(signupForm.createUser());
+		User user = userService.saveUser(signupForm.createAccount());
 		userService.signIn(user);
         // see /WEB-INF/i18n/messages.properties and /WEB-INF/views/homeSignedIn.html
         MessageHelper.addSuccessAttribute(ra, "signup.success");

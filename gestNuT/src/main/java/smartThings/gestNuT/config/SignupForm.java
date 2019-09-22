@@ -1,8 +1,9 @@
-package smartThings.gestNuT.configuration;
+package smartThings.gestNuT.config;
 
-import org.hibernate.validator.constraints.*;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
-import smartThings.gestNuT.model.*;
+import smartThings.gestNuT.model.User;
 
 public class SignupForm {
 
@@ -32,7 +33,7 @@ public class SignupForm {
 		this.password = password;
 	}
 
-	public User createUser() {
+	public User createAccount() {
         return new User(getEmail(), getPassword(), "ROLE_USER");
 	}
 }

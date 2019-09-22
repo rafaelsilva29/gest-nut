@@ -1,4 +1,4 @@
-package smartThings.gestNuT.configuration;
+package smartThings.gestNuT.config;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.context.MessageSource;
@@ -32,7 +32,7 @@ class WebMvcConfig extends WebMvcConfigurationSupport {
     private static final String RESOURCES_LOCATION = "/resources/";
     private static final String RESOURCES_HANDLER = RESOURCES_LOCATION + "**";
 
-    /*@Override
+    @Override
     public RequestMappingHandlerMapping requestMappingHandlerMapping() {
         RequestMappingHandlerMapping requestMappingHandlerMapping = super.requestMappingHandlerMapping();
         requestMappingHandlerMapping.setUseSuffixPatternMatch(false);
@@ -70,7 +70,7 @@ class WebMvcConfig extends WebMvcConfigurationSupport {
         return templateEngine;
     }
 
-   /@Bean
+    @Bean
     public ViewResolver viewResolver() {
         ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
         thymeleafViewResolver.setTemplateEngine(templateEngine());
@@ -93,7 +93,7 @@ class WebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
-    }*/
+    }
 
     /**
      * Handles favicon.ico requests assuring no <code>404 Not Found</code> error is returned.
