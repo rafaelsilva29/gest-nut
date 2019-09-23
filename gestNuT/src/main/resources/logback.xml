@@ -15,5 +15,5 @@
 		<appender-ref ref="STDOUT" />
 	</root>
 
-	<logger name="thymeleafexamples.layouts" level="ALL" />
+	<logger name="smartThings.gestNuT" level="ALL" />
 </configuration>

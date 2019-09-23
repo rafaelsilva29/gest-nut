@@ -7,15 +7,15 @@ Building
 
  Clean compilation products:
  
-     mvn clean
+     $ mvn clean
      
  Compile:
  
-     mvn compile
+     $ mvn compile
      
  Run in a tomcat server:
  
-     mvn tomcat7:run
+     $ mvn tomcat7:run
 
  Once started, the application should be available at:
 
