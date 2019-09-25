@@ -9,8 +9,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 
 import smartThings.gestNuT.service.UserService;
@@ -29,17 +27,12 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new TokenBasedRememberMeServices("remember-me-key", userService);
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .eraseCredentials(true)
             .userDetailsService(userService)
-            .passwordEncoder(passwordEncoder());
+            .passwordEncoder(smartThings.gestNuT.config.WebMvcConfig.passwordEncoder());
     }
 
     @Override

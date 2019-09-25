@@ -10,18 +10,39 @@
 </head>
 <body>
 <div class="container">
-<form class="form-narrow form-horizontal" method="post" th:action="@{/signup}" th:object="${signupForm}" th:fragment="signupForm">
+<form class="form-narrow form-horizontal" method="post" th:action="@{/signup}" th:object="${user}" th:fragment="user">
     <!--/* Show general error message when form contains errors */-->
-    <th:block th:if="${#fields.hasErrors('${signupForm.*}')}">
+    <th:block th:if="${#fields.hasErrors('${user.*}')}">
         <div th:replace="fragments/alert :: alert (type='danger', message='Form contains errors. Please try again.')">Alert</div>
     </th:block>
     <fieldset>
         <legend>Please Sign Up</legend>
+        <div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? 'has-error'">
+            <label for="firstName" class="col-lg-2 control-label">First Name</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" th:field="*{firstName}" />
+                <span class="help-block" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Incorrect First Name</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-error'">
+            <label for="lastName" class="col-lg-2 control-label">Last Name</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" th:field="*{lastName}" />
+                <span class="help-block" th:if="${#fields.hasErrors('lastName')}" th:errors="*{firstName}">Incorrect Last Name</span>
+            </div>
+        </div>
         <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error'">
             <label for="email" class="col-lg-2 control-label">Email</label>
             <div class="col-lg-10">
                 <input type="text" class="form-control" id="email" placeholder="Email address" th:field="*{email}" />
                 <span class="help-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect email</span>
+            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('phoneNumber')}? 'has-error'">
+            <label for="phoneNumber" class="col-lg-2 control-label">Phone Number</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number" th:field="*{phoneNumber}" />
+                <span class="help-block" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Incorrect Phone Number</span>
             </div>
         </div>
         <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-error'">
