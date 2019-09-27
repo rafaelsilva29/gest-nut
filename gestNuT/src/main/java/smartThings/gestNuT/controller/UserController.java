@@ -16,25 +16,25 @@ import java.security.Principal;
 @RestController
 public class UserController {
 
-    private final UserRepository accountRepository;
+    private final UserRepository userRepository;
 
-    public UserController(UserRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    @GetMapping("account/current")
+    @GetMapping("user/current")
     @ResponseStatus(value = HttpStatus.OK)
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
     public User currentAccount(Principal principal) {
         Assert.notNull(principal);
-        return accountRepository.findByEmail(principal.getName());
+        return userRepository.findByEmail(principal.getName());
     }
 
-    @GetMapping("account/{id}")
+    @GetMapping("user/{id}")
     @ResponseStatus(value = HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public User account(@PathVariable("id") Long id) {
-        return accountRepository.findOne(id);
+    public User user(@PathVariable("id") Long id) {
+        return userRepository.findOne(id);
     }
 }
 

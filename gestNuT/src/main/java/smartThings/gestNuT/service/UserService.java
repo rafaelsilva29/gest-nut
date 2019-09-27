@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 import org.springframework.stereotype.Service;
 
@@ -21,18 +22,23 @@ import smartThings.gestNuT.repo.UserRepository;
 
 @Service("userService")
 public class UserService implements UserDetailsService {
-
+	
+	@Autowired
 	private UserRepository userRepository;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired
-	public UserService(UserRepository userRepository) {
+	public UserService(BCryptPasswordEncoder bCryptPasswordEncoder, UserRepository userRepository) {
 		this.userRepository = userRepository;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 
 	@PostConstruct
 	protected void initialize() {
-		// save(new Account("user", "demo", "ROLE_USER"));
-		// save(new Account("admin", "admin", "ROLE_ADMIN"));
+		User userFlag = userRepository.findByEmail("shop.nut.2019@gmail.com");
+		if(userFlag == null){
+			saveUser(new User("shop.nut.2019@gmail.com", bCryptPasswordEncoder.encode("admin"), "admin", "admin", "admin", "ROLE_ADMIN"));
+		}
 	}
 
 	public User findByEmail(String email) {
