@@ -1,0 +1,16 @@
+Criar um website para venda de subscrição de produtos alimentar, nozes 
+(https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcT0PSuJNHspa_ixj0pxcGaqpqOO4bJDGmFFIERd7xQHJY_sxKUAPRw&usqp=CAc) online que deverá permitir:
+
+Página web (landing page) de apresentação do produto (sacos de nozes com entrega ao domicilio) fazer uma compra, e subscrever uma newsletter
+
+O que iremos avaliar:
+
+- Front-end: Qualidade de apresentação da landing page (podes usar templates disponíveis na net) e implementação das funcionalidades de de interação com o utilizador (desenvolver em VEU.JS);
+
+- O administrador deverá ter um backoffice para gestão de encomendas e clientes e onde terá acesso ao valor da noz no mercado
+
+- Back-end: O site deverá usar uma API desenvolvida em Java boot spring para registar encomendas e consultar o perfil do utilizador/histórico e tratar da newsletter, e recolher preço de nos através do site (http://www.gpp.pt:8080/sima/default/)
+
+- Deverás implementar um algoritmo de sugestão de alerta para comunicar com o cliente após um período sem compras baseado no histórico de compras;
+
+- Geral: Processo de desenvolvimento, preparação para release, segurança testes, base de dados , etc
