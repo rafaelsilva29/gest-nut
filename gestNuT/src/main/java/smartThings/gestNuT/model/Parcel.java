@@ -35,23 +35,31 @@ public class Parcel {
     @Column(name = "product", nullable = false)
     private String product;
 
+    @Column(name = "totalPrice", nullable = false)
+    private double totalPrice;
+
+    @Column(name = "priceNut", nullable = false)
+    private double priceNut;
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @JoinColumn(name = "addressId", referencedColumnName = "id")
     private Address address;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
     public Parcel() {
 
     }
 
-    public Parcel(Date date, String status, int quatity, String product) {
+    public Parcel(Date date, String status, int quantity, String product, double priceNut, double totalPrice) {
         this.date = date;
         this.status = status;
-        this.quantity = quatity;
+        this.quantity = quantity;
         this.product = product;
+        this.priceNut = priceNut;
+        this.totalPrice = totalPrice;
     }
 
     // Getters
@@ -59,17 +67,25 @@ public class Parcel {
     public Date getDate() { return this.date; }
     public int getQuantity() { return this.quantity; }
     public String getProduct() { return this.product; }
+    public User getUser() { return this.user; }
+    public Address getAddress() { return this.address; }
+    public double getTotalPrice() { return this.totalPrice; }
+    public double getPriceNut() { return this.priceNut; }
 
     // Setters
     public void setDate(Date date) { this.date = date; }
     public void setQuantity(int quant) { this.quantity = quant; }
     public void setProduct(String product) { this.product = product; }
+    public void setUser(User user) { this.user = user; }
+    public void setAddress(Address address) { this.address = address; }
+    public void setTotalPrice(double total) { this.totalPrice = total; }
+    public void setPriceNut(double price) { this.priceNut = price; }
 
     @Override
     public String toString() {
         String parcel = String.format(
-            "Parcel[id: %d, Date: '%s', Quantity: %d, Product: '%s']", 
-            id, date, quantity, product);
+            "Parcel[id: %d, Date: '%s', Quantity: %d, Product: '%s', TotalPrice: %d, Price Nut: %d]", 
+            id, date, quantity, product, totalPrice, priceNut);
         return parcel;
     }
     

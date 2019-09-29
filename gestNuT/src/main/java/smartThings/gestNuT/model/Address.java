@@ -23,6 +23,7 @@ public class Address {
     public Long id;
 
     @Column(name = "name", nullable = false)
+    @NotEmpty(message = "Please provide name")
     private String name;
 
     @Column(name = "street", nullable = false)

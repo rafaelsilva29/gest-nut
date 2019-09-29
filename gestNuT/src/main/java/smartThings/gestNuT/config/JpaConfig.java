@@ -19,14 +19,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("smartThings.gestNuT")
+@EnableJpaRepositories("smartThings.gestNuT.repo")
 public class JpaConfig {
     
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[]{"smartThings.gestNuT"});
+        em.setPackagesToScan(new String[]{"smartThings.gestNuT.model"});
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

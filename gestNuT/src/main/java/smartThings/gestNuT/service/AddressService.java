@@ -33,6 +33,10 @@ public class AddressService {
 		return addressRepository.findOne(id);
 	}
 
+	public Address findByName(String name) {
+		return addressRepository.findByName(name);
+	}
+
 	public Iterable<Address> findByUserId(Long id) {
 		return addressRepository.findByUserId(id);
 	}

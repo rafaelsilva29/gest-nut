@@ -9,4 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ParcelRepository extends JpaRepository<Parcel, Long> {
     Parcel findByDate(Date date);
     Parcel findByProduct(String product);
+    Iterable<Parcel> findByUserId(Long id);
+    Iterable<Parcel> findByAddressId(Long id);
 }
