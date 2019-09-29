@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/headerUserSignin :: header">&nbsp;</div>
+<div class="container">
+    <!-- /* Handle the flash message */-->
+    <th:block th:if="${message != null}">
+        <!-- /* The message code is returned from the @Controller */ -->
+        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+    </th:block>
+    <fieldset>
+<div>
+    <div id="addresses-list">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <td>Name</td>
+                <td>Street</td>
+                <td>Postal Code</td>
+                <td>City</td>
+                <td>Notes</td>
+                <td><b>Delete</b></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${addresses.empty}">
+                <td colspan="6">No Addresses</td>
+            </tr>
+            <tr th:each="address : ${addresses}">
+                <td>
+                    <a href="#" th:href="@{/address/{id}(id=${address.id})}" th:text="${address.name}">Name ...</a>
+                </td>
+                <td th:text="${address.street}">Street ...</td>
+                <td th:text="${address.postalCode}">Postal Code ...</td>
+                <td th:text="${address.city}">City ...</td>
+                <td th:text="${address.notes}">Notes ...</td>
+                <td>
+                    <a href="#" th:href="@{/address/delete/{id}(id=${address.id})}" method="post" th:text="${address.name}">Delete ...</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <p>
+                <a id="addAddress" class="btn btn-success btn-lg">Add Address</a>
+            </p>
+        </div>
+    </div>
+</div>
+    </fieldset>
+    <div th:insert="~{fragments/footer :: footer}">&copy; 2019 gestNuT</div>
+</div>
+<script th:inline="javascript" type="text/javascript">
+
+/* Fill in modal with content loaded with Ajax */
+$(document).ready(function () {
+    $('#addAddress').on('click', function (e) {
+        $("#myModal").modal();
+        $("#myModalBody").text("");
+        $.ajax({
+            url: "addAddress",
+            cache: false
+        }).done(function (html) {
+            $("#myModalBody").append(html);
+        });
+    })
+});
+</script>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Add Address</h4>
+                </div>
+                <div class="modal-body" id="myModalBody">Lorem ipsum</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</body>
+</html>

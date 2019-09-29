@@ -84,4 +84,8 @@ public class UserService implements UserDetailsService {
 		return new SimpleGrantedAuthority(user.getRole());
 	}
 
+	public User findOne(Long id) {
+		return userRepository.findOne(id);
+	}
+
 }

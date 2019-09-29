@@ -16,9 +16,17 @@
         <!-- /* The message code is returned from the @Controller */ -->
         <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
     </th:block>
-    <p>
-        Welcome to the gestNuT application, a place to buy Nut!
-    </p>
+    <div class="text-center">
+        
+        <h1>SmartThings</h1>
+        
+        <div class="lead">
+            Welcome to the gestNuT application, a place to buy Nut!
+            <p></p>
+            <img src="../../../resources/images/nut.png" alt="Nut bag" height="600" width="600">
+            <p></p>
+        </div>
+    </div>
     <div th:insert="~{fragments/footer :: footer}">&copy; 2019 gestNuT</div>
 </div>
 </body>

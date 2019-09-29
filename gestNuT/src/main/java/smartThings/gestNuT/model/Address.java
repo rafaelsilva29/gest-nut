@@ -20,7 +20,7 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private int id;
+    public Long id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -41,7 +41,7 @@ public class Address {
     private String notes;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
     @OneToOne(mappedBy = "address")
@@ -51,21 +51,23 @@ public class Address {
 
     }
 
-    public Address(String name, String street, String postal, String city, String notes) {
+    public Address(String name, String street, String postal, String city, String notes, User user) {
         this.name = name;
         this.street = street;
         this.postalCode = postal;
         this.city = city;
         this.notes = notes;
+        this.user = user;
     }
 
     // Getters
-    public int getID() { return this.id; }
+    public Long getID() { return this.id; }
     public String getName() { return this.name; }
     public String getStreet() { return this.street; }
     public String getPostalCode() { return this.postalCode; }
     public String getCity() { return this.city; }
     public String getNotes() { return this.notes; }
+    public User getUser() { return this.user; }
 
     // Setters
     public void setName(String name) { this.name = name; } 
@@ -73,6 +75,7 @@ public class Address {
     public void setPostalCode(String postalCode) { this.postalCode = postalCode; } 
     public void setCity(String city) { this.city = city; } 
     public void setNotes(String notes) { this.notes = notes; } 
+    public void setUser(User user) { this.user = user; }
 
     @Override
     public String toString() {

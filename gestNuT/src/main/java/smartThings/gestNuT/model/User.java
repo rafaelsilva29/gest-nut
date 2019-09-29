@@ -24,7 +24,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "email", nullable = false, unique = true)
     @Email(message = "Please provide a valid e-mail")
@@ -80,7 +80,7 @@ public class User {
     }
 
 	// Getters
-    public int getId() { return id; }
+    public Long getId() { return id; }
     public String getEmail() { return email; }
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
@@ -89,11 +89,20 @@ public class User {
     public boolean getEnabled() { return enabled; }
     public String getRole() { return role; }
     public String getPhoneNumber() { return this.phoneNumber; }
+    public Set<Address> getAddresses() {
+        Set<Address> resp = new HashSet<>();
+        for(Address a : addresses) { resp.add(a); }
+        return resp;
+    }
+    public Set<Parcel> getParcels() {
+        Set<Parcel> resp = new HashSet<>();
+        for(Parcel p : parcels) { resp.add(p); }
+        return resp;
+    }
     
     // Setters
 	public void setConfirmationToken(String confirmationToken) { this.confirmationToken = confirmationToken; }
     public void setEnabled(boolean value) { this.enabled = value; }
-    public void setId(int id) { this.id = id; }
     public void setPassword(String password) { this.password = password; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public void setLastName(String lastName) { this.lastName = lastName; }

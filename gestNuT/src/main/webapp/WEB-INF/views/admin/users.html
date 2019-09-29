@@ -9,25 +9,41 @@
     <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<div th:replace="fragments/headerAdminSignin :: header">&nbsp;</div>
+<div th:replace="fragments/headerUserSignin :: header">&nbsp;</div>
 <div class="container">
     <!-- /* Handle the flash message */-->
     <th:block th:if="${message != null}">
         <!-- /* The message code is returned from the @Controller */ -->
         <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
     </th:block>
-    <div class="text-center">
-        
-        <h1>SmartThings</h1>
-        
-        <div class="lead">
-            Welcome to the gestNuT application, a place to buy Nut!
-            <p></p>
-            <img src="../../../resources/images/nut.png" alt="Nut bag" height="600" width="600">
-            <p></p>
-        </div>
+    <fieldset>
+       <!--/* Insert content fragment with content of the element with id = 'task-list' */-->
+<div>
+    <div>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <td>Name</td>
+                <td>Street</td>
+                <td>Postal Code</td>
+                <td>City</td>
+                <td>Notes</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="address : ${address}">
+                <td th:text="${address.name}">Name ...</td>
+                <td th:text="${address.street}">Street ...</td>
+                <td th:text="${address.postalCode}">Postal Code ...</td>
+                <td th:text="${address.city}">City ...</td>
+                <td th:text="${address.notes}">Notes ...</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <div th:insert="~{fragments/footer :: footer-admin}">&copy; 2019 gestNuT</div>
+</div>
+    </fieldset>
+    <div th:insert="~{fragments/footer :: footer}">&copy; 2019 gestNuT</div>
 </div>
 </body>
 </html>

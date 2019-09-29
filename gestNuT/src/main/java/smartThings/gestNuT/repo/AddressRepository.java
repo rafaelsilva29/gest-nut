@@ -9,4 +9,5 @@ public interface AddressRepository extends JpaRepository<Address, Long>{
     Address findByName(String name);
     Address findByPostalCode(String postalCode);
     Address findByStreet(String street);
+    Iterable<Address> findByUserId(Long id);
 }

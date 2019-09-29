@@ -21,7 +21,7 @@ public class Parcel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "date", nullable = false)
     private Date date;
@@ -55,7 +55,7 @@ public class Parcel {
     }
 
     // Getters
-    public int getID() { return this.id; }
+    public Long getID() { return this.id; }
     public Date getDate() { return this.date; }
     public int getQuantity() { return this.quantity; }
     public String getProduct() { return this.product; }

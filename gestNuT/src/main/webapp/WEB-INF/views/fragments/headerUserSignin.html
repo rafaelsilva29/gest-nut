@@ -20,10 +20,10 @@
                     <a href="#" th:href="@{/homeUserSignedIn}">Home</a>
                 </li>
                 <li th:classappend="${module == 'addresses' ? 'active' : ''}">
-                    <a href="#" th:href="@{/user/current/addresses}">Addresses</a>
+                    <a href="#" th:href="@{/addresses}">Addresses</a>
                 </li>
                 <li th:classappend="${module == 'parcels' ? 'active' : ''}">
-                    <a href="#" th:href="@{/user/current/parcels}">Parcels</a>
+                    <a href="#" th:href="@{/parcels}">Parcels</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

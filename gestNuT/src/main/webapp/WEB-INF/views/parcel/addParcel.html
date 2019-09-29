@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Signup</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+<form class="form-narrow form-horizontal" method="post" th:action="@{/addAddress}" th:object="${address}" th:fragment="address">
+    <!--/* Show general error message when form contains errors */-->
+    <th:block th:if="${#fields.hasErrors('${address.*}')}">
+       <!-- <div th:replace="fragments/alert :: alert (type='danger', message='Form contains errors. Please try again.')">Alert</div>-->
+    </th:block>
+    <fieldset>
+        <legend>Add Address</legend>
+        <div th:if="${confirmationMessage}" class="alert alert-success"
+          role="alert" th:text=${confirmationMessage}></div>
+
+        <div th:if="${alreadyRegisteredMessage}"
+          class="alert alert-danger" role="alert"
+          th:text="${alreadyRegisteredMessage}"></div>
+
+        <div th:if="${#fields.hasErrors('name')}"
+          th:errors="*{name}"
+          class="validation-message alert alert-danger" role="alert"></div>
+        
+        <div th:if="${#fields.hasErrors('postalCode')}"
+            th:errors="*{postalCode}"
+            class="validation-message alert alert-danger" role="alert"></div>
+        
+        <div th:if="${#fields.hasErrors('city')}"
+            th:errors="*{city}"
+            class="validation-message alert alert-danger" role="alert"></div>
+
+        <div th:if="${#fields.hasErrors('notes')}"
+            th:errors="*{notes}"
+            class="validation-message alert alert-danger" role="alert"></div>
+ 
+        <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-error'">
+            <label for="name" class="col-lg-2 control-label">Name</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="name" placeholder="Name" th:field="*{name}" />
+                <span class="help-block" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect Name</span>
+            </div>
+        </div>
+
+        <div class="form-group" th:classappend="${#fields.hasErrors('street')}? 'has-error'">
+            <label for="street" class="col-lg-2 control-label">Street</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="street" placeholder="Street" th:field="*{street}" />
+                <span class="help-block" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">Incorrect Street</span>
+            </div>
+        </div>
+
+        <div class="form-group" th:classappend="${#fields.hasErrors('postalCode')}? 'has-error'">
+            <label for="postalCode" class="col-lg-2 control-label">Postal Code</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="postalCode" placeholder="Postal Code" th:field="*{postalCode}" />
+                <span class="help-block" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}">Incorrect Postal Code</span>
+            </div>
+        </div>
+
+        <div class="form-group" th:classappend="${#fields.hasErrors('city')}? 'has-error'">
+            <label for="city" class="col-lg-2 control-label">City</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="city" placeholder="City" th:field="*{city}" />
+                <span class="help-block" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">Incorrect City</span>
+            </div>
+        </div>
+
+        <div class="form-group" th:classappend="${#fields.hasErrors('notes')}? 'has-error'">
+            <label for="notes" class="col-lg-2 control-label">Notes</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="notes" placeholder="Notes" th:field="*{notes}" />
+                <span class="help-block" th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}">Incorrect Notes</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit" class="btn btn-default">Add Address</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+</div>
+</body>
+</html>

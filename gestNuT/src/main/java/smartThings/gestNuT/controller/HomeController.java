@@ -22,7 +22,7 @@ class HomeController {
         return "home";
     }
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value="/")
     public ModelAndView showHomeUserPage(ModelAndView modelAndView) {
         modelAndView.setViewName(HOME_VIEW_NAME);
         return modelAndView;                          
