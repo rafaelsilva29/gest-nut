@@ -88,4 +88,12 @@ public class UserService implements UserDetailsService {
 		return userRepository.findOne(id);
 	}
 
+	public Iterable<User> findAll() {
+		return userRepository.findAll();
+	}
+
+	public void deleteUser(Long id) {
+		userRepository.delete(id);
+	}
+
 }

@@ -9,7 +9,7 @@
     <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<div th:replace="fragments/headerUserSignin :: header">&nbsp;</div>
+<div th:replace="fragments/headerAdminSignin :: header">&nbsp;</div>
 <div class="container">
     <!-- /* Handle the flash message */-->
     <th:block th:if="${message != null}">
@@ -19,24 +19,37 @@
     <fieldset>
        <!--/* Insert content fragment with content of the element with id = 'task-list' */-->
 <div>
-    <div>
+    <div id="users-list">
         <table class="table table-bordered table-striped">
             <thead>
             <tr>
-                <td>Name</td>
-                <td>Street</td>
-                <td>Postal Code</td>
-                <td>City</td>
-                <td>Notes</td>
+                <td>Email</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Phone Number</td>
+                <td>Role</td>
+                <td><b>Update</b></td>
+                <td><b>Delete</b></td>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="address : ${address}">
-                <td th:text="${address.name}">Name ...</td>
-                <td th:text="${address.street}">Street ...</td>
-                <td th:text="${address.postalCode}">Postal Code ...</td>
-                <td th:text="${address.city}">City ...</td>
-                <td th:text="${address.notes}">Notes ...</td>
+            <tr th:if="${users.empty}">
+                <td colspan="7">No Users</td>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td>
+                    <a href="#" th:href="@{/admin/user/{id}(id=${user.id})}" th:text="${user.email}">Email ...</a>
+                </td>
+                <td th:text="${user.firstName}">First Name ...</td>
+                <td th:text="${user.lastName}">Last Name ...</td>
+                <td th:text="${user.phoneNumber}">Phone Number ...</td>
+                <td th:text="${user.role}">Role ...</td>
+                <td>
+                    <a href="#" th:href="@{/admin/user/update/{id}(id=${user.id})}" method="post" th:text="Update">Update ...</a>
+                </td>
+                <td>
+                    <a href="#" th:href="@{/admin/user/delete/{id}(id=${user.id})}" method="post" th:text="Delete">Delete ...</a>
+                </td>
             </tr>
             </tbody>
         </table>

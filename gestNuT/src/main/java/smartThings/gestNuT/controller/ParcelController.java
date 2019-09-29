@@ -43,7 +43,7 @@ public class ParcelController {
 
     @RequestMapping(value = "parcels", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    @Secured({"ROLE_USER"})
     public ModelAndView showAddressesPage(ModelAndView modelAndView, Principal principal) {
         User user = userService.findByEmail(principal.getName());
         modelAndView.setViewName(PARCELS_VIEW_NAME);
@@ -54,7 +54,7 @@ public class ParcelController {
     
     @RequestMapping(value = "parcel/{id}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    @Secured({"ROLE_USER", "ROLER_ADMIN"})
+    @Secured({"ROLE_USER"})
     public ModelAndView showParcelPage(@PathVariable("id") Long id, ModelAndView modelAndView) {
         modelAndView.setViewName(PARCEL_VIEW_NAME);
         modelAndView.addObject("parcel", parcelService.findOne(id));
@@ -94,7 +94,7 @@ public class ParcelController {
      // Process form input data
     @RequestMapping(value = "/parcel/delete/{id}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    @Secured({"ROLE_USER"})
 	public ModelAndView processDeleteParcelForm(@PathVariable("id") Long id, ModelAndView modelAndView, Principal principal) {
         parcelService.deleteParcel(id);
         User user = userService.findByEmail(principal.getName());

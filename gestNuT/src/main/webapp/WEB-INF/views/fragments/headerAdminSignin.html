@@ -25,6 +25,9 @@
                 <li th:classappend="${module == 'admin/parcels' ? 'active' : ''}">
                     <a href="#" th:href="@{/admin/parcels}">Parcels</a>
                 </li>
+                <li th:classappend="${module == 'admin/newsLetter' ? 'active' : ''}">
+                    <a href="#" th:href="@{/admin/newsLetter}">NewsLetter</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li th:if="${#authorization.expression('!isAuthenticated()')}">

@@ -43,7 +43,7 @@
                 <td th:text="${address.city}">City ...</td>
                 <td th:text="${address.notes}">Notes ...</td>
                 <td>
-                    <a href="#" th:href="@{/address/delete/{id}(id=${address.id})}" method="post" th:text="${address.name}">Delete ...</a>
+                    <a href="#" th:href="@{/address/delete/{id}(id=${address.id})}" method="post" th:text="Delete">Delete ...</a>
                 </td>
             </tr>
             </tbody>
@@ -80,7 +80,7 @@ $(document).ready(function () {
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Add Address</h4>
+                    <h4 class="modal-title" id="myModalLabel">Please Add Address</h4>
                 </div>
                 <div class="modal-body" id="myModalBody">Lorem ipsum</div>
                 <div class="modal-footer">
