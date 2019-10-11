@@ -1,3 +1,3 @@
 # gestNuT
 
-Project individual of a WebSite implement Thymeleafs Templates with Java Spring Boot
+Individual project of a WebSite implement Thymeleafs Templates with Java Spring Boot
