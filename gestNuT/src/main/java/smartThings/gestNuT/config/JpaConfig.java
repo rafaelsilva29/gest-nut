@@ -40,7 +40,7 @@ public class JpaConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         // mysql config
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/shopNuT_DB");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/gestNuT_DB");
         dataSource.setUsername("root");
         dataSource.setPassword("futebol2001");
         return dataSource;
